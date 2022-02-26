@@ -12,6 +12,7 @@ variables:
   tag: '$(Build.BuildId)'
 
 stages:
+
 - stage: Build
   displayName: Build Docker Image
   jobs:
@@ -28,9 +29,10 @@ stages:
         Dockerfile: '**/Dockerfile'
         tags: | 
          $(tag)
+
 - stage: Provision 
   displayName: 'Terraforming on Azure ...'
-  depends on: Build
+  dependsOn: Build
   jobs:
     - job: Provision 
       displayName: 'Provising Container Instance'
@@ -41,6 +43,7 @@ stages:
       steps:
       - script: |
           set -e
+          
           terraform init -input=false
           terraform apply -input=false -auto-approve
         name: 'RunTerraform'
