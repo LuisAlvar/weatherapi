@@ -9,6 +9,15 @@ terraform {
   }
 }
 
+terraform {
+  backend "azurerm"  {
+    resource_group_name = "tf_rg_storage"
+    storage_account_name = "tfstorageweatherapi"
+    container_name = "tfstate"
+    key = "terraform.tfstate"
+  }
+}
+
 # Configure the Microsoft Azure Provider
 provider "azurerm" {
   features {}
@@ -40,13 +49,3 @@ resource "azurerm_container_group" "tfcg_test" {
     }
   }
 }
-
-#I stopped the container on Azure, 59:04 on video
-
-
-#setx ARM_CLIENT_ID [];
-#setx ARM_CLIENT_SECRET [];
-#setx ARM_TENANT_ID [];
-#setx ARM_SUBSCRIPTION_ID [];
-
-#TerraformServiceP{rincpleforCICD is being added as Contributor for luisenalvar-pay-as-you-go. 
