@@ -1,6 +1,6 @@
 jobs:
 - job: BuildAndPush 
-  display: Build and Push Image 
+  displayName: Build and Push Image 
   pool: 
     vmImage: unbuntu-latest
   steps:
