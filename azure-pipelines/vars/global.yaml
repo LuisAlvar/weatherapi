@@ -2,8 +2,8 @@
 variables:
 
 # Deployment Conditions 
-isMain: ${{  eq(variables.Build.SourceBranch, 'refs/head/main')  }}
-isProd: ${{  eq(variables.Build.SourceBranch, 'refs/heads/production')  }}
+isMain: ${{  eq(variables['Build.SourceBranch'], 'refs/head/main')  }}
+isProd: ${{  eq(variables['Build.SourceBranch'], 'refs/head/production')  }}
 
 # Docker 
 imageName: luisenalvar/weatherapi
