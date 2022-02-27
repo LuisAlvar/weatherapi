@@ -1,1 +1,2 @@
-tag: '$(Build.BuildId)'
+variables:
+  tag: '$(Build.BuildId)'

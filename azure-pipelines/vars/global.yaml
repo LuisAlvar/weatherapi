@@ -1,16 +1,16 @@
 #Note the syntax ${{}} for compile time and $[] for runtime expressions.
 variables:
 
-# Deployment Conditions 
-isMain: ${{  eq(variables['Build.SourceBranch'], 'refs/head/main')  }}
-isProd: ${{  eq(variables['Build.SourceBranch'], 'refs/head/production')  }}
+  # Deployment Conditions 
+  isMain: ${{  eq(variables['Build.SourceBranch'], 'refs/heads/main')  }}
+  isProd: ${{  eq(variables['Build.SourceBranch'], 'refs/heads/production')  }}
 
-# Docker 
-imageName: luisenalvar/weatherapi
-containerRegistry: DockerHubSerConnect
+  # Docker 
+  imageName: luisenalvar/weatherapi
+  containerRegistry: DockerHubSerConnect
 
-# Terraform 
-tfEnvironmentVariables: TerraformEnvVars
+  # Terraform 
+  tfEnvironmentVariables: TerraformEnvVars
 
-# dev-pipeline.yam or prod-pipeline.yaml will overwrite value 
-containerInstanceAzureName: unset
+  # dev-pipeline.yam or prod-pipeline.yaml will overwrite value 
+  containerInstanceAzureName: unset
