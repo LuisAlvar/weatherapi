@@ -1,0 +1,14 @@
+jobs:
+- job: BuildAndPush 
+  display: Build and Push Image 
+  pool: 
+    vmImage: unbuntu-latest
+  steps:
+  - task: Docker@2
+    inputs:
+      containerReistry: '$(containerRegistry)'
+      repository: '$(imageName)'
+      command: 'buildAndPush'
+      Dockerfile:  '**/Dockerfile'
+      tags: | 
+        $(tag)

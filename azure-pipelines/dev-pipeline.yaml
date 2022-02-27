@@ -1,0 +1,44 @@
+name: $(BuilID)
+
+# CI trigger specfic to GitHub 
+trigger: # Continuous integration triggers cause a pipeline to run whenevery you push an update to the specied branches or you push specified tags.
+  batch: true # set to true, when a pipeline is running, the system waits until the run is completed, then starts another run with all changes that have not yet been built
+  branches: 
+    include: 
+      - main 
+    exclude: 
+      - production/*
+  tags:  # if you don't specify any tag triggers, by default, tags will not trigger pipelines
+    include:
+      - v* 
+  paths: 
+    exclude: 
+      - README.md #don't tigger pipeline when changes to md file are made
+
+# Pull request triggers causes a pipeline to run whenever a pull request is opened with one of the specificed target 
+# branches, or when udpates are made to such a pull request 
+pr: 
+- main # This configuration starts a new run the first time a new pull request is create, and after every update made to the pull request. 
+
+pool: 
+  vmImage: 'ubuntu-latest' # the pipeline runs on a linux agent 
+
+variables:
+- template: vars/global.yaml
+- template: vars/dev.yaml
+
+
+stages: 
+
+#Build 
+- stage: DockerStage
+  displayName: Build Docker Image and Push Image to DockerHub
+  jobs: 
+  - template: jobs/docker.yaml
+
+#Deploy 
+- stage: TerraformStage
+  displayName: 'Terraforming with Azure Provider API ...'
+  dependsOn: DockerStage
+  jobs:
+  - template: jobs/terraform.yaml

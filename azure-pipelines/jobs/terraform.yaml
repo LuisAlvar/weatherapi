@@ -1,0 +1,20 @@
+jobs:
+  - job: Provision 
+    displayName: 'Provising Resources and Container Instnace'
+    pool:
+      vmImage: 'ubuntu-latest'
+    variables: 
+    - groups: '$(tfEnvironmentVariables)'
+    steps: 
+    - script: |
+        set -e
+        terraform init -input=false
+        terraform apply -input=false -auto-approve
+      name: 'RunTerraform'
+      displayName: 'Running Terraform'
+        env: 
+          ARM_CLIENT_ID: $(ARM_CLIENT_ID)
+          ARM_CLIENT_SECRET: $(ARM_CLIENT_SECRET)
+          ARM_TENANT_ID: $(ARM_TENANT_ID)
+          ARM_SUBSCRIPTION_ID: $(ARM_SUBSCRIPTION_ID)
+          TF_VAR_imagebuild: $(tag)
