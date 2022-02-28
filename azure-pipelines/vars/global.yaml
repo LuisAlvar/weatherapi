@@ -10,7 +10,7 @@ variables:
   containerRegistry: DockerHubSerConnect
 
   # Terraform 
-  tfEnvironmentVariables: TerraformEnvVars
+  environmentVariables: TerraformEnvVars
 
   # dev-pipeline.yam or prod-pipeline.yaml will overwrite value 
   containerInstanceAzureName: unset
