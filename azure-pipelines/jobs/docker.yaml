@@ -2,7 +2,7 @@ jobs:
 - job: BuildAndPush 
   displayName: Build and Push Image 
   pool: 
-    vmImage: unbuntu-latest
+    vmImage: 'ubuntu-latest'
   steps:
   - task: Docker@2
     inputs:
