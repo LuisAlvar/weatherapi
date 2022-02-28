@@ -1,10 +1,10 @@
 jobs:
   - job: Provision 
-    displayName: 'Provising Resources and Container Instnace'
+    displayName: 'Provising Resources and Container Instance'
     pool:
       vmImage: 'ubuntu-latest'
     variables: 
-    - group: ${{environmentVariables}}
+    - group: TerraformEnvVars
     steps: 
     - script: |
         set -e
