@@ -6,7 +6,7 @@ jobs:
   steps:
   - task: Docker@2
     inputs:
-      containerReistry: '$(containerRegistry)'
+      containerRegistry: '$(dockerServiceConnect)'
       repository: '$(imageName)'
       command: 'buildAndPush'
       Dockerfile:  '**/Dockerfile'
