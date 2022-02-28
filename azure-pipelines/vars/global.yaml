@@ -10,7 +10,7 @@ variables:
   dockerServiceConnect: DockerHubSerConnect
 
   # Terraform 
-  TerraformVariables: TerraformEnvVars
+  # TerraformVariables: TerraformEnvVars #unable to use this variable on terraform.yaml under group
 
   # dev-pipeline.yam or prod-pipeline.yaml will overwrite value 
   containerInstanceAzureName: unset
