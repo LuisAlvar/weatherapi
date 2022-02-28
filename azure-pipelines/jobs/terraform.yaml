@@ -4,7 +4,7 @@ jobs:
     pool:
       vmImage: 'ubuntu-latest'
     variables: 
-    - group: ${{variables.TerraformVariables}}
+    - group: $(variables.TerraformVariables)
     steps: 
     - script: |
         set -e
