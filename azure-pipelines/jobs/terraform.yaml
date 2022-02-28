@@ -4,7 +4,7 @@ jobs:
     pool:
       vmImage: 'ubuntu-latest'
     variables: 
-    - group: $(environmentVariables)
+    - group: ${{environmentVariables}}
     steps: 
     - script: |
         set -e
