@@ -1,4 +1,4 @@
-name: $(BuilID)
+name: $(BuildId)
 
 # CI trigger specfic to GitHub 
 trigger: # Continuous integration triggers cause a pipeline to run whenevery you push an update to the specied branches or you push specified tags.
