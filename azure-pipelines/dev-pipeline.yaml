@@ -33,12 +33,14 @@ stages:
 #Build 
 - stage: DockerStage
   displayName: Build Docker Image and Push Image to DockerHub
+  condition: and(succeeded(), eq(variables.deployMain, 'True'))
   jobs: 
   - template: jobs/docker.yaml
 
 #Deploy 
 - stage: TerraformStage
   displayName: 'Terraforming with Azure Provider API ...'
+  condition: and(succeeded(), eq(variables.deployMain, 'True'))
   dependsOn: DockerStage
   jobs:
   - template: jobs/terraform.yaml
