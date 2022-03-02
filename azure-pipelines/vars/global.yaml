@@ -16,7 +16,7 @@ variables:
   dockerImageName: luisenalvar/weatherapi
   dockerServiceConnect: DockerHubSerConnect
   ${{ if eq(variables.isTag, 'False')  }}:
-    imagetag: dev-latest
+    imagetag: dev_latest
 
   # Terraform 
   # TerraformVariables: TerraformEnvVars #unable to use this variable on terraform.yaml under group
