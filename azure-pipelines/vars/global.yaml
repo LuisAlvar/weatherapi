@@ -10,11 +10,13 @@ variables:
   isScheduled: ${{  eq(variables['Build.Reason'], 'Schedule')  }}
   isTrustedCI: ${{  and( eq(variables.isFork, 'False'), eq(variables.isPR, 'False'), eq(variables.isScheduled, 'False'))   }}
   deployMain:  ${{  and( eq(variables.isMain, 'True'), eq(variables.isTrustedCI, 'True') )  }}
+  isTag:       ${{  startsWith(variables['Build.SourceBranch'], 'refs/tags/v')  }}
 
-  
   # Docker 
-  imageName: luisenalvar/weatherapi
+  dockerImageName: luisenalvar/weatherapi
   dockerServiceConnect: DockerHubSerConnect
+  ${{ if eq(variables.isTag, 'False')  }}:
+    imagetag: dev-latest
 
   # Terraform 
   # TerraformVariables: TerraformEnvVars #unable to use this variable on terraform.yaml under group

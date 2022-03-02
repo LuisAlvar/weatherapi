@@ -1,2 +1,2 @@
 variables:
-  tag: '$(Build.BuildId)'
+  tag: '$(imagetag)_$(Build.BuildId)'
